@@ -6,7 +6,7 @@ import filtersReducer from './filtersRedux';
 import orderReducer from './orderRedux';
 
 // define initial state and shallow-merge initial data
-const initialState = {
+export const initialState = {
   trips: tripList,
   countries: {},
   regions: {},

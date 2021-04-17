@@ -7,7 +7,6 @@ import {formatPrice} from '../../../utils/formatPrice';
 class OrderSummary extends React.Component {
 
   render() {
-    console.log(this.props);
     const {price, options} = this.props;
     return (
       <div>
