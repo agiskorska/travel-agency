@@ -44,5 +44,7 @@ const checkDescriptionAtDate = (date, expectedDescription) => {
 describe('Component HappyHourAd with mocked Date', () => {
   checkDescriptionAtDate('06/18/2022', '2 days left till summer!');
   checkDescriptionAtDate('06/20/2022', '1 day left till summer!');
+  checkDescriptionAtDate('06/25/2022', '');
+
 
 });
