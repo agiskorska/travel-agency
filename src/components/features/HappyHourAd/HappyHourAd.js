@@ -1,18 +1,17 @@
 import React from 'react';
 import styles from './HappyHourAd.scss';
-
 import PropTypes from 'prop-types';
-
-
-export class HappyHourAd extends React.Component {
+import { formatTime } from '../../../utils/formatTime.js';
+class HappyHourAd extends React.Component {
   constructor(){
     super();
+
     setInterval(() => {
       this.forceUpdate();
     } , 1000);
-
   }
-  getCountdownTime() {
+
+  getCountdownTime(){
     const currentTime = new Date();
     const nextNoon = new Date(Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 12, 0, 0, 0));
 
@@ -26,28 +25,25 @@ export class HappyHourAd extends React.Component {
   getTimeLeft() {
     const currentTime = new Date();
     let description;
-    if(currentTime.getHours() >= 12 && currentTime.getHours() < 13) {
+    if (currentTime.getUTCHours() >= 12 && currentTime.getUTCHours() < 13){
       description = this.props.promoDescription;
     } else {
-      description = this.getCountdownTime();
+      description = formatTime(this.getCountdownTime());
     }
     return description;
   }
 
   render() {
-    console.log(this.props);
     const {title} = this.props;
-
-    return(
-      <div>
+    return (
+      <div className={styles.component}>
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.promoDescription}>
-          { this.getTimeLeft() }
-        </div>
+        <div className={styles.promoDescription}>{this.getTimeLeft()}</div>
       </div>
     );
   }
 }
+
 HappyHourAd.propTypes = {
   title: PropTypes.string,
   promoDescription: PropTypes.string,
